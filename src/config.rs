@@ -90,6 +90,8 @@ pub(crate) struct PrioritizeConfig {
 pub(crate) struct AutolabelConfig {
     #[serde(flatten)]
     pub(crate) labels: HashMap<String, AutolabelLabelConfig>,
+    #[serde(flatten)]
+    pub(crate) files: HashMap<String, AutolabelFileConfig>,
 }
 
 impl AutolabelConfig {
@@ -109,6 +111,11 @@ pub(crate) struct AutolabelLabelConfig {
     pub(crate) trigger_labels: Vec<String>,
     #[serde(default)]
     pub(crate) exclude_labels: Vec<String>,
+}
+
+#[derive(PartialEq, Eq, Debug, serde::Deserialize)]
+pub(crate) struct AutolabelFileConfig {
+    pub(crate) trigger_files: Vec<String>,
 }
 
 #[derive(PartialEq, Eq, Debug, serde::Deserialize)]
